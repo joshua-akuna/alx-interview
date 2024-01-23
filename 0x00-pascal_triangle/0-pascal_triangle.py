@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """The module defines the pascal_triangle function"""
 
 
