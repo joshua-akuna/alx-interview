@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 def validUTF8(data):
     start_mask = [128, 192, 224, 240]
