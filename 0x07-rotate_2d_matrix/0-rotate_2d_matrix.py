@@ -1,6 +1,10 @@
 #!/usr/bin/python3
+"""defines the rotate_2d_matrix function
+"""
 
 def rotate_2d_matrix(matrix):
+    """the function rotates a 2d square matrix
+    """
     n = len(matrix)
     
     # Transpose the matrix
