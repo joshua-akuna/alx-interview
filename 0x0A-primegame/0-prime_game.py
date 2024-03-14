@@ -1,49 +1,43 @@
 #!/usr/bin/python3
-"""The module defines the isWinner function
-"""
+"""Pick primes out of a list until none are left"""
+
+
+def primes_list(n):
+    """Return list of prime numbers up to and including n."""
+    primes = []
+    x = 1
+    while x < n:
+        prime = 1
+        x += 1
+        for num in primes:
+            if not x % num:
+                prime = 0
+                break
+        if prime:
+            primes.append(x)
+    return primes
 
 
 def isWinner(x, nums):
-    """The isWinner funtion
-    x - number of games to play
-    nums - list of numbers
     """
-    def is_prime(num):
-        """The function determines if num is a prime number
-        """
-        if num < 2:
-            return False
-        for i in range(2, int(num**0.5) + 1):
-            if num % i == 0:
-                return False
-        return True
-
-    def calculate_winner(n):
-        """calculate_winner function for players
-        """
-        primes = [i for i in range(2, n + 1) if is_prime(i)]
-        total_primes = set(primes)
-        maria_wins = True
-
-        while total_primes:
-            current_player = maria_wins
-            for prime in primes:
-                if prime in total_primes:
-                    current_player = not current_player
-                    multiples = set(range(prime, n + 1, prime))
-                    total_primes -= multiples
-
-            maria_wins = not maria_wins
-
-        return "Maria" if maria_wins else "Ben"
-
-    winners = [calculate_winner(n) for n in nums]
-    maria_wins_count = winners.count("Maria")
-    ben_wins_count = winners.count("Ben")
-
-    if maria_wins_count > ben_wins_count:
-        return "Maria"
-    elif ben_wins_count > maria_wins_count:
-        return "Ben"
-    else:
+    Take turns picking primes out of a list of 1 to n until none are left
+    or x maximum moves. Whoever chooses the last prime number wins.
+    First player is Maria, second is Ben. nums is a list of ns. Return
+    name of who wins the most games.
+    """
+    winners = [0, 0]
+    if (len(nums) < x):
         return None
+
+    i = 0
+    for n in nums:
+        if i >= x:
+            break
+        winners[len(primes_list(n)) % 2] += 1
+        i += 1
+
+    if winners[0] == winners[1]:
+        return None
+    if winners[0] < winners[1]:
+        return 'Maria'
+    return 'Ben'
