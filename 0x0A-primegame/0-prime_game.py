@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Module for solving prime game question """
 
+
 def isWinner(x, nums):
     """function that checks for the winner"""
     if not nums or x < 1:
@@ -22,6 +23,7 @@ def isWinner(x, nums):
     player1 = 0
     for x in nums:
         player1 += my_filter[x] % 2 == 1
+
     if player1 * 2 == len(nums):
         return None
     if player1 * 2 > len(nums):
